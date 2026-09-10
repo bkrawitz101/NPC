@@ -1,0 +1,212 @@
+/* ==========================================================================
+   ORIGINAL BRAND TOKENS & STYLE GUIDE
+   New Paradigm Capital | Light Portal Group
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-espresso: #30210F;
+  --warm-charcoal: #423321;
+  --soft-sand: #ECEAE6;
+  --section-alt-bg: #E3E0DA;
+  --warm-taupe: #8D8173;
+  --pure-white: #FFFFFF;
+  --label-color: #A09689;
+  --border-subtle: rgba(48, 33, 15, 0.12);
+  --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-stack);
+  background-color: var(--soft-sand);
+  color: var(--dark-espresso);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- TYPOGRAPHY UTILITIES --- */
+.section-label {
+  font-family: var(--font-stack);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--label-color);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-stack);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--dark-espresso);
+}
+
+p {
+  color: var(--warm-charcoal);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Container with generous padding away from edges */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 clamp(2rem, 5vw, 4rem);
+}
+
+.section-padding {
+  padding: 7.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 5rem 0;
+  }
+  .container {
+    padding: 0 1.75rem;
+  }
+}
+
+/* --- BUTTONS & INTERACTIVE --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-stack);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 1.1rem 2.85rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--dark-espresso);
+  color: var(--pure-white);
+  border-color: var(--dark-espresso);
+}
+
+.btn-primary:hover {
+  background-color: var(--warm-charcoal);
+  border-color: var(--warm-charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(48, 33, 15, 0.15);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--dark-espresso);
+  border-color: var(--dark-espresso);
+}
+
+.btn-secondary:hover {
+  background-color: var(--dark-espresso);
+  color: var(--pure-white);
+  transform: translateY(-2px);
+}
+
+/* Secondary Alt / Gold */
+.btn-gold {
+  background-color: var(--dark-espresso);
+  color: var(--pure-white);
+  border-color: var(--dark-espresso);
+}
+
+.btn-gold:hover {
+  background-color: var(--warm-charcoal);
+  border-color: var(--warm-charcoal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(48, 33, 15, 0.15);
+}
+
+/* --- CARDS & CONTAINERS --- */
+.solid-card, .glass-card, .capital-card, .asset-card, .service-card, .ecosystem-card, .position-box {
+  background: var(--pure-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--warm-taupe);
+  margin-bottom: 0.5rem;
+}
+
+.badge-gold, .badge-sage {
+  color: var(--warm-taupe);
+}
+
+/* --- FORMS --- */
+.form-group {
+  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  font-family: var(--font-stack);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  color: var(--dark-espresso);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-subtle);
+  font-family: inherit;
+  color: var(--dark-espresso);
+  font-size: 0.95rem;
+  border-radius: 2px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 1px solid var(--dark-espresso);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

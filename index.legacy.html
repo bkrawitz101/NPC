@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Paradigm Capital | County-Wide Pilot Program & Capital Pool</title>
+  <style>
+    /* --- CSS RESET & BRAND TOKENS --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --dark-espresso: #30210F;
+      --warm-charcoal: #423321;
+      --soft-sand: #ECEAE6;
+      --warm-taupe: #8D8173;
+      --pure-white: #FFFFFF;
+      --label-color: #A09689;
+      --border-subtle: rgba(48, 33, 15, 0.12);
+      --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--soft-sand);
+      color: var(--dark-espresso);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* --- TYPOGRAPHY UTILITIES --- */
+    .section-label {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--label-color);
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-stack);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    p {
+      color: var(--warm-charcoal);
+      font-size: 1.05rem;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 6.5rem 0;
+    }
+
+    /* --- BUTTONS & INTERACTIVE --- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 1rem 2.75rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--dark-espresso);
+      color: var(--pure-white);
+      border-color: var(--dark-espresso);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--warm-charcoal);
+      border-color: var(--warm-charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(48, 33, 15, 0.15);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--dark-espresso);
+      border-color: var(--dark-espresso);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--dark-espresso);
+      color: var(--pure-white);
+      transform: translateY(-2px);
+    }
+
+    /* --- NAVIGATION --- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(236, 234, 230, 0.94);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+    }
+
+    .brand-logo {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      color: var(--dark-espresso);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-logo span {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--warm-taupe);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--warm-charcoal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-links a:hover {
+      color: var(--dark-espresso);
+      opacity: 0.7;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding-top: 13rem;
+      padding-bottom: 8rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 920px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+      margin: 1.25rem 0 1.5rem;
+      color: var(--dark-espresso);
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      color: var(--warm-charcoal);
+      margin-bottom: 2.75rem;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    /* --- 8 FORMS OF CAPITAL SECTION --- */
+    .capital-section {
+      background-color: #E3E0DA;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .capital-header {
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 820px;
+    }
+
+    .capital-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .capital-card {
+      background: var(--soft-sand);
+      padding: 1.75rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+      transition: var(--transition-smooth);
+    }
+
+    .capital-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(48, 33, 15, 0.06);
+      background-color: var(--pure-white);
+    }
+
+    .capital-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--warm-taupe);
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .capital-title {
+      font-size: 1.2rem;
+      color: var(--dark-espresso);
+      margin-bottom: 0.5rem;
+    }
+
+    /* --- PILOT FOUNDATION SECTION --- */
+    .pilot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .asset-card {
+      background: var(--pure-white);
+      border: 1px solid var(--border-subtle);
+      padding: 2.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .asset-card h3 {
+      font-size: 1.75rem;
+      margin: 0.5rem 0 1.25rem;
+    }
+
+    .asset-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-taupe);
+      margin-bottom: 0.5rem;
+    }
+
+    .ring-fence-banner {
+      margin-top: 3.5rem;
+      background: var(--dark-espresso);
+      color: var(--pure-white);
+      padding: 2.75rem;
+      border-radius: 2px;
+    }
+
+    .ring-fence-banner h4 {
+      color: var(--soft-sand);
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .ring-fence-banner p {
+      color: #D3CDC6;
+      max-width: 900px;
+    }
+
+    .capital-positions {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .position-box {
+      border: 1px solid var(--border-subtle);
+      padding: 2rem;
+      background: var(--pure-white);
+    }
+
+    .position-amount {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--dark-espresso);
+      margin: 0.5rem 0;
+    }
+
+    /* --- TIERED SERVICES SECTION --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--pure-white);
+      border: 1px solid var(--border-subtle);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .service-price {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 1rem 0 1.25rem;
+      color: var(--dark-espresso);
+    }
+
+    /* --- ECOSYSTEM SECTION --- */
+    .ecosystem-section {
+      background-color: #E3E0DA;
+    }
+
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .ecosystem-card {
+      background: var(--soft-sand);
+      border: 1px solid var(--border-subtle);
+      padding: 2.25rem;
+      border-radius: 2px;
+    }
+
+    .partner-list {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* --- BOOKING & CONTACT SECTION --- */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      margin-top: 3.5rem;
+    }
+
+    .booking-ui {
+      background: var(--pure-white);
+      padding: 2.25rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .calendar-mock {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .cal-day-header {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--warm-taupe);
+      text-transform: uppercase;
+    }
+
+    .cal-day {
+      padding: 0.75rem 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--soft-sand);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .cal-day.selectable:hover {
+      border-color: var(--dark-espresso);
+      background-color: #D3CDC6;
+    }
+
+    .cal-day.selected {
+      background-color: var(--dark-espresso);
+      color: var(--pure-white);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--pure-white);
+      border: 1px solid var(--border-subtle);
+      font-family: inherit;
+      color: var(--dark-espresso);
+      font-size: 0.95rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 1px solid var(--dark-espresso);
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: var(--dark-espresso);
+      color: var(--soft-sand);
+      padding: 5rem 0 3rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-col h5 {
+      color: var(--pure-white);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col p, .footer-col a {
+      color: #C0B7AE;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--pure-white);
+    }
+
+    /* --- MODAL --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(48, 33, 15, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1.5rem;
+    }
+
+    .modal-card {
+      background: var(--soft-sand);
+      max-width: 580px;
+      width: 100%;
+      padding: 2.75rem;
+      position: relative;
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-espresso);
+    }
+
+    /* --- RESPONSIVE BREAKPOINTS --- */
+    @media (max-width: 992px) {
+      .pilot-grid, .capital-positions, .services-grid, .ecosystem-grid, .booking-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header class="nav">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        NEW PARADIGM CAPITAL
+        <span>Light Portal Group</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#capital">8 Capitals</a></li>
+        <li><a href="#pilot">County-Wide Pilot</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#intake">Capital Pool Intake</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- SECTION 1: HERO -->
+  <section class="hero container">
+    <div class="hero-content">
+      <span class="section-label">A Pioneer Real Asset Class</span>
+      <h1>Redefining Wealth, Reimagining Progress</h1>
+      <p class="hero-subheadline">
+        A land- and labor-backed <strong>Asset Class</strong> structured via a targeted <strong>Capital Pool</strong> to deploy our flagship <strong>County-Wide Pilot Program</strong>—resolving society’s core resilience, settlement, and capital bottlenecks.
+      </p>
+      <div class="hero-actions">
+        <a href="#pilot" class="btn btn-primary">Explore the County-Wide Pilot</a>
+        <button class="btn btn-secondary" onclick="toggleModal(true)">Request Investment Brief</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: 8 FORMS OF CAPITAL -->
+  <section id="capital" class="section-padding capital-section">
+    <div class="container">
+      <div class="capital-header">
+        <span class="section-label">Normative Multi-Capital Accounting</span>
+        <h2>Holistic Value Creation Across a Tangible Asset Class</h2>
+        <p>Transitioning beyond conventional financial abstraction by deploying dedicated capital pools directly into eight foundational forms of real, regenerative wealth.</p>
+      </div>
+      <div class="capital-grid">
+        <div class="capital-card">
+          <span class="capital-num">01 / CAPITAL</span>
+          <h4 class="capital-title">Financial</h4>
+          <p>Liquid currency, syndication vehicles, and monetary exchange mechanisms.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">02 / CAPITAL</span>
+          <h4 class="capital-title">Social</h4>
+          <p>Trust networks, communal governance structures, and social cohesion.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">03 / CAPITAL</span>
+          <h4 class="capital-title">Intellectual</h4>
+          <p>Patents, permaculture design frameworks, software, and settlement blueprints.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">04 / CAPITAL</span>
+          <h4 class="capital-title">Natural</h4>
+          <p>Perpetual water rights, timber stock, living topsoil, biodiversity, and ecosystem stability.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">05 / CAPITAL</span>
+          <h4 class="capital-title">Cultural</h4>
+          <p>Regional heritage, community folklore, civic arts, and multi-generational wisdom preservation.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">06 / CAPITAL</span>
+          <h4 class="capital-title">Spiritual</h4>
+          <p>Purpose-driven alignment, sacred ecology sanctuaries, and holistic wellness.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">07 / CAPITAL</span>
+          <h4 class="capital-title">Experiential</h4>
+          <p>Embodied physical trade skills, wilderness navigation, agronomy, and craftsmanship.</p>
+        </div>
+        <div class="capital-card">
+          <span class="capital-num">08 / CAPITAL</span>
+          <h4 class="capital-title">Material</h4>
+          <p>Infrastructure, physical built environments, off-grid utilities, and processing machinery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PILOT FOUNDATION -->
+  <section id="pilot" class="section-padding container">
+    <span class="section-label">County-Wide Pilot Program — $500,000 Capital Pool</span>
+    <h2>Two Assets. Two Instruments. One County.</h2>
+    <p style="max-width: 820px; margin-top: 0.75rem;">
+      Our <strong>County-Wide Pilot Program</strong> anchors a dual-engine architecture: ring-fencing commercial cash flow from sovereign village equity within an integrated jurisdictional testing ground.
+    </p>
+
+    <div class="pilot-grid">
+      <!-- Commercial Asset -->
+      <div class="asset-card">
+        <div>
+          <span class="asset-badge">Commercial Yield Engine</span>
+          <h3>Castile on the Ridge</h3>
+          <p><strong>Footprint:</strong> 9 Acres</p>
+          <p><strong>Program Role:</strong> Operating hospitality and demonstration site. Generates near-term cashflow to pay living wages and systematically amortize the foundational <strong>Capital Pool</strong>.</p>
+        </div>
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+          <small>Backstop: Senior Commercial Lien</small>
+        </div>
+      </div>
+
+      <!-- Village Asset -->
+      <div class="asset-card">
+        <div>
+          <span class="asset-badge">Sovereign Land Engine</span>
+          <h3>Sebastopol Land Parcel</h3>
+          <p><strong>Footprint:</strong> 160 Acres</p>
+          <p><strong>Program Role:</strong> Raw acreage with verified water rights. Serves as the real-property anchor of our <strong>Asset Class</strong>, settling sweat equity at 1,560 hours per 5 sovereign acres.</p>
+        </div>
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+          <small>Backstop: Worker Equity Title Trust</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ring Fencing Feature -->
+    <div class="ring-fence-banner">
+      <h4>Structural Risk Mitigation: Ring-Fenced Architecture</h4>
+      <p>
+        Capital Pool allocations settle strictly against the cashflow-generating commercial site; worker labor equity vests solely against village acreage. The downside liabilities of one asset cannot pierce or encumber the collateral of the other.
+      </p>
+    </div>
+
+    <!-- Capital Positions Breakdown -->
+    <div class="capital-positions">
+      <div class="position-box">
+        <span class="section-label">Capital Pool Tranche A</span>
+        <div class="position-amount">$250,000</div>
+        <p><strong>Village Land Acquisition:</strong> Directly purchases and establishes environmental trust covenants across the 160-acre Sebastopol site.</p>
+      </div>
+      <div class="position-box">
+        <span class="section-label">Capital Pool Tranche B</span>
+        <div class="position-amount">$250,000</div>
+        <p><strong>Commercial Site Buyout:</strong> Secures Castile on the Ridge hospitality facility to unlock operational revenue and immediate cashflow.</p>
+      </div>
+      <div class="position-box">
+        <span class="section-label">Position Zero</span>
+        <div class="position-amount">Low 5-Figure</div>
+        <p><strong>Option Proof-of-Concept:</strong> Underwrites statutory closing, title escrow, and municipal permitting for the County-Wide Pilot Program.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: TIERED SERVICES -->
+  <section id="services" class="section-padding" style="background-color: #E3E0DA; border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <span class="section-label">Offerings &amp; Services</span>
+      <h2>The Conscious McDonald's Scalable Delivery Model</h2>
+      <p>A standardized product matrix supporting the broader deployment of this regenerative Asset Class.</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div>
+            <span class="section-label">Tier 1</span>
+            <h3>Retreat MVP</h3>
+            <div class="service-price">$150 &ndash; $199</div>
+            <p>Weekend Camping &amp; Glamping immersion at Castile on the Ridge. Field access to demonstration agriculture, dining, and site master tours.</p>
+          </div>
+          <a href="#intake" class="btn btn-secondary" style="margin-top: 2rem;">Book Weekend</a>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <span class="section-label">Tier 2</span>
+            <h3>Strategic Retainer</h3>
+            <div class="service-price">$3,000+ <span style="font-size: 0.9rem; font-weight: normal;">/ mo</span></div>
+            <p>Full property assessments, spatial master planning, brand strategy, and multi-capital accounting setup for private acreage holders.</p>
+          </div>
+          <a href="#intake" class="btn btn-secondary" style="margin-top: 2rem;">Retain Advisory</a>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <span class="section-label">Tier 3</span>
+            <h3>Master Partnership</h3>
+            <div class="service-price">$30,000 &ndash; $50,000+</div>
+            <p>Full-scale village design-build partnerships. Replicating our County-Wide Pilot Program frameworks across new jurisdictions and regional land trusts.</p>
+          </div>
+          <button onclick="toggleModal(true)" class="btn btn-primary" style="margin-top: 2rem;">Initiate Partnership</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: ECOSYSTEM -->
+  <section id="ecosystem" class="section-padding container">
+    <span class="section-label">Light Portal Ecosystem</span>
+    <h2>Integrated Family of Ventures</h2>
+    <p>The operational ecosystem powering our County-Wide Pilot Program and multi-capital settlement thesis.</p>
+
+    <div class="ecosystem-grid">
+      <div class="ecosystem-card">
+        <h3>Earth Force</h3>
+        <p style="margin-top: 0.5rem;">Food forest villages, ecological land regeneration, and the Living University Permaculture Rangers training the ground-level workforce for each pilot region.</p>
+      </div>
+      <div class="ecosystem-card">
+        <h3>Light Tribe</h3>
+        <p style="margin-top: 0.5rem;">Decentralized gig-economy network linking regenerative land initiatives with creative, logistical, and technical talent.</p>
+      </div>
+      <div class="ecosystem-card">
+        <h3>Lighthouse</h3>
+        <p style="margin-top: 0.5rem;">Transformative retreat sanctuaries, off-grid wellness centers, and membership-driven nature preserves focused on deep personal restoration.</p>
+      </div>
+      <div class="ecosystem-card">
+        <h3>Natural Intelligence (NI)</h3>
+        <p style="margin-top: 0.5rem;">Open-source AI ecological mapping, soil bio-monitoring sensors, and watershed digital twins serving asset optimization across our regional holdings.</p>
+      </div>
+    </div>
+
+    <div class="partner-list">
+      <span class="section-label" style="margin: 0;">Strategic Alliances</span>
+      <p style="font-weight: 700; font-size: 0.9rem;">StratCamp (Civic &amp; Policy Campaigns)</p>
+      <p style="font-weight: 700; font-size: 0.9rem;">Future Is Now (Regenerative Media &amp; Tech)</p>
+      <p style="font-weight: 700; font-size: 0.9rem;">Raven Foundation (Grant &amp; Land Trusts)</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: INTAKE & RETREAT BOOKING -->
+  <section id="intake" class="section-padding" style="background-color: #E3E0DA; border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <span class="section-label">Capital Pool Allocation &amp; Intake</span>
+      <h2>Participate in the Pilot</h2>
+      
+      <div class="booking-grid">
+        <!-- Booking Prototype -->
+        <div class="booking-ui">
+          <h3>Reserve Pilot Retreat MVP</h3>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Select an upcoming field demonstration weekend at Castile on the Ridge ($150 - $199).</p>
+          
+          <div class="calendar-mock" id="calendar">
+            <div class="cal-day-header">M</div>
+            <div class="cal-day-header">T</div>
+            <div class="cal-day-header">W</div>
+            <div class="cal-day-header">T</div>
+            <div class="cal-day-header">F</div>
+            <div class="cal-day-header">S</div>
+            <div class="cal-day-header">S</div>
+            
+            <!-- Calendar Dates -->
+            <div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
+            <div class="cal-day selectable" onclick="selectDate(this, 'Oct 18-19')">18</div>
+            <div class="cal-day selectable" onclick="selectDate(this, 'Oct 19-20')">19</div>
+            <div class="cal-day">20</div>
+            
+            <div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+            <div class="cal-day selectable" onclick="selectDate(this, 'Oct 25-26')">25</div>
+            <div class="cal-day selectable" onclick="selectDate(this, 'Oct 26-27')">26</div>
+            <div class="cal-day">27</div>
+          </div>
+          <div id="booking-selection" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--dark-espresso);">
+            Selected Slot: None (Click a weekend date above)
+          </div>
+          <button class="btn btn-primary" style="width: 100%;" onclick="confirmBooking()">Reserve Weekend</button>
+        </div>
+
+        <!-- Investor Form -->
+        <form class="booking-ui" onsubmit="handleFormSubmit(event)">
+          <h3>Capital Pool Allocation Inquiry</h3>
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="name">Legal Name / Institution</label>
+            <input type="text" id="name" required placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="email">Institutional Email</label>
+            <input type="email" id="email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="type">Position in Capital Pool</label>
+            <select id="type">
+              <option value="Position A">Capital Pool Tranche A ($250k - Village Land)</option>
+              <option value="Position B">Capital Pool Tranche B ($250k - Commercial Site)</option>
+              <option value="Position Zero">Position Zero (Option / Feasibility)</option>
+              <option value="Services Tier 2/3">County-Wide Pilot Expansion Partner</option>
+              <option value="Land Donor">Land Trust Contributor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Strategic Alignment / Asset Criteria</label>
+            <textarea id="notes" rows="3" placeholder="Outline allocation capacity or target land parameters..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Allocation Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-wrap">
+        <div class="footer-col" style="max-width: 320px;">
+          <h5>NEW PARADIGM CAPITAL</h5>
+          <p>Deploying a land- and labor-backed Asset Class through dedicated Capital Pools and scalable County-Wide Pilot Programs.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Principal Contact</h5>
+          <p>Kirill Ravensong</p>
+          <a href="mailto:KirilRavensong@protonmail.com">KirilRavensong@protonmail.com</a>
+          <a href="tel:5308593888">530-859-3888</a>
+        </div>
+        <div class="footer-col">
+          <h5>Ecosystem Core</h5>
+          <p>Earth Force</p>
+          <p>Light Tribe</p>
+          <p>Lighthouse Sanctuaries</p>
+          <p>Natural Intelligence (NI)</p>
+        </div>
+      </div>
+      <div style="padding-top: 2rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--warm-taupe);">
+        <p>&copy; 2026 New Paradigm Capital. All rights reserved.</p>
+        <p>Normative Multi-Capital Accounting Standard</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INVESTMENT BRIEF MODAL -->
+  <div class="modal-overlay" id="briefModal">
+    <div class="modal-card">
+      <button class="close-modal-btn" onclick="toggleModal(false)">&times;</button>
+      <span class="section-label">Confidential Brief</span>
+      <h3 style="margin-bottom: 1rem;">County-Wide Pilot Program Prospectus</h3>
+      <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+        Enter your institutional or private investor credentials below to receive the complete Capital Pool prospectus, balance sheets, and Asset Class legal structuring.
+      </p>
+      <form onsubmit="handleModalSubmit(event)">
+        <div class="form-group">
+          <label for="modal-email">Accredited Email Address</label>
+          <input type="email" id="modal-email" required placeholder="investor@fund.org" />
+        </div>
+        <div class="form-group">
+          <label for="modal-phone">Phone Number</label>
+          <input type="tel" id="modal-phone" placeholder="Optional" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit Documentation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    let selectedWeekend = null;
+
+    function selectDate(element, slot) {
+      document.querySelectorAll('.cal-day.selectable').forEach(el => {
+        el.classList.remove('selected');
+      });
+      element.classList.add('selected');
+      selectedWeekend = slot;
+      document.getElementById('booking-selection').innerText = `Selected Slot: Weekend of ${slot}`;
+    }
+
+    function confirmBooking() {
+      if (!selectedWeekend) {
+        alert('Please choose an available weekend date from the calendar.');
+        return;
+      }
+      alert(`Booking initiated for: ${selectedWeekend}. Redirecting to guest confirmation.`);
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const type = document.getElementById('type').value;
+      alert(`Thank you, ${name}. Your allocation inquiry for ${type} has been forwarded to Kirill Ravensong.`);
+      event.target.reset();
+    }
+
+    function handleModalSubmit(event) {
+      event.preventDefault();
+      alert('The County-Wide Pilot Program Prospectus has been dispatched to your email.');
+      toggleModal(false);
+      event.target.reset();
+    }
+
+    function toggleModal(open) {
+      const modal = document.getElementById('briefModal');
+      modal.style.display = open ? 'flex' : 'none';
+    }
+
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('briefModal');
+      if (e.target === modal) {
+        toggleModal(false);
+      }
+    });
+  </script>
+</body>
+</html>
